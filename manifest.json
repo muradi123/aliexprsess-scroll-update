@@ -1,0 +1,40 @@
+{
+    "name": "AliExpress Infinite Scroll",
+    "description" : "Infinite Scroll for AliExpress.com - MyOrders page, Category Page, Search list page",
+    "version": "1.0",
+    "icons":{ 
+        "128":"./images/aliexpress-16.png",
+        "48":"./images/aliexpress-64.png",
+        "16":"./images/aliexpress-128.png"
+    },
+
+    "manifest_version": 2,
+    "browser_action": {
+        "default_icon": {                   
+            "16":"./images/aliexpress-16.png"
+          }
+    },
+
+    "permissions": ["*://*.aliexpress.com/*",
+      "tabs" ],
+
+    "background": {
+      "scripts": ["./scripts/jquery.js", "./scripts/background.js"]
+    },
+    "web_accessible_resources":[
+      "./images/*.png"
+    ],
+
+    "content_scripts": [
+        {
+          "matches": [
+            "*://*.aliexpress.com/*"
+           ],
+          "run_at": "document_end",
+          "all_frames": true,
+          "js": ["./scripts/jquery.js", "./scripts/content.js", "./scripts/getProducts.js" ]
+          
+        }
+      ]
+    
+}
